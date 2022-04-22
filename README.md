@@ -26,9 +26,8 @@
 0.  源码中的.hd后缀文件需要用天问Block打开工程文件即可，工程编译后会生成HEX文件
 1.  源码中的.uvproj后缀文件直接用Keil打开工程文件即可，工程编译后会生成HEX文件
 2.  源码编译后的文件为后缀HEX文件，需要通过STC-isp下载到您的单片机开发板中
-Keil工程下可以直接打开的是GB2312版本的代码，为了方便您的操作，[在Gitee上的就是GBK版本](https://gitee.com/makermare/mcu-routine-of-mcs8051-kernel)
-源码也有[UTF-8版本的](https://github.com/makermare/MCS8051-MCU-)
-，UTF-8版本的代码需要在Keil里设置。
+Keil工程下可以直接打开的是GB2312版本的代码，为了方便您的操作，我们这个.c文件是GB2312编码的
+如果您是需要UTF-8版本，请在Keil里设置encode以及同步用文本编辑器对.c文件转码
 
 
 ### 欢迎参与本例程的贡献
