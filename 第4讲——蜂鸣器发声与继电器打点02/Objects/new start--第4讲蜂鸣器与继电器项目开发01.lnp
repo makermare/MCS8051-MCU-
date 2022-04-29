@@ -1,3 +1,0 @@
-".\Objects\new start04.obj" 
-TO ".\Objects\new start--第4讲蜂鸣器与继电器项目开发01" 
-PRINT(".\Listings\new start--第4讲蜂鸣器与继电器项目开发01.m51") RAMSIZE(256) 

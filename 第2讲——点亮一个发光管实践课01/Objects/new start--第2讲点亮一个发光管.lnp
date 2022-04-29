@@ -1,3 +1,0 @@
-".\Objects\new start.obj" 
-TO ".\Objects\new start--第2讲点亮一个发光管" 
-PRINT(".\Listings\new start--第2讲点亮一个发光管.m51") RAMSIZE(256) 
