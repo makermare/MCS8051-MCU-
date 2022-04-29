@@ -1,0 +1,77 @@
+C51 COMPILER V9.60.0.0   NEW_START1                                                        04/19/2022 16:26:07 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE NEW_START1
+OBJECT MODULE PLACED IN .\Objects\new start1.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE new start1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\new start1.lst) OBJECT(.\Objects\new start1.obj)
+
+line level    source
+
+   1          /***************************************
+   2          *GB2312
+   3          *作者：创客海
+   4          *内容：流水灯项目理论课-闪烁灯
+   5          *实验板：新起点51单片机实验板
+   6          *单片机型号：STC89C52RC
+   7          ***************************************/
+   8          
+   9          #include <STC89C5xRC.H>//引用了头文件，如果没有可用reg51.h代替
+  10          
+  11          sbit LED0 = P1 ^ 0;//位声明了P1.0引脚为led0
+  12          
+  13          void main()//主函数，程序的入口
+  14          {
+  15   1          unsigned int i;//定义main函数内的局部变量i
+  16   1          while (1)//死循环
+  17   1          {
+  18   2              LED0 = 0;//将发光管LED0点亮
+  19   2              i = 50000;//将i赋值为整数50000
+  20   2              while (i--);//执行i次空操作
+  21   2              LED0 = 1;
+  22   2              i = 50000;
+  23   2              while (i--);
+  24   2          }
+  25   1          /*
+  26   1          while(1)//在死循环中对P1的I/O口进行赋值
+  27   1          {
+  28   1              P1 = 0xfe;//1111 1111
+  29   1          }
+  30   1          */
+  31   1      }
+  32          /*
+  33          //前面的实验是闪烁灯，后面的实验是改变闪烁间隔的闪烁
+  34          void main()//主函数，程序的入口
+  35          {
+  36                  unsigned int i, j;//定义main函数内的局部变量i、j
+  37                  j = 50000;//将j赋值为整数50000
+  38          
+  39                  while (1)//死循环
+  40                  {
+  41                          LED0 = 0;
+  42                          i = j;
+  43                          while (i--);
+  44                          LED0 = 1;
+  45                          i = j;
+  46                          while (i--);
+  47          
+  48                          j = j / 10 * 9;//j的值是原来的0.9倍，改变j的值可以减少闪烁间隔
+  49                  }
+  50          }
+  51          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+C51 COMPILER V9.60.0.0   NEW_START1                                                        04/19/2022 16:26:07 PAGE 2   
+
+   CODE SIZE        =     34    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,153 @@
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:32 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE NEW_START03
+OBJECT MODULE PLACED IN .\Objects\new start03.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE new start03.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\new start03.lst) OBJECT(.\Objects\new start03.obj)
+
+line level    source
+
+   1          /***************************************
+   2          *GB2312
+   3          *作者：创客海
+   4          *内容：流水灯项目理论课-流水灯
+   5          *实验板：新起点51单片机实验板
+   6          *单片机型号：STC89C52RC
+   7          ***************************************/
+   8          
+   9          #include <STC89C5xRC.H>//引用了头文件，如果没有可用reg51.h代替
+  10          #include <INTRINS.H>//循环左移循环右移必须的函数
+  11          
+  12          
+  13          /*
+  14          sbit led0 = P1^0;//位声明了P1.0引脚为led0
+  15          sbit led1 = P1^1;//位声明了P1.1引脚为led1
+  16          sbit led2 = P1^2;//位声明了P1.2引脚为led2
+  17          sbit led3 = P1^3;//位声明了P1.3引脚为led3
+  18          sbit led4 = P1^4;//位声明了P1.4引脚为led4
+  19          sbit led5 = P1^5;//位声明了P1.5引脚为led5
+  20          sbit led6 = P1^6;//位声明了P1.6引脚为led6
+  21          sbit led7 = P1^7;//位声明了P1.7引脚为led7
+  22          //循环逐个点亮流水灯
+  23          void main()//主函数，程序的入口
+  24          {
+  25              while(1)
+  26              {
+  27                  unsigned int i;
+  28                  led0 = 0;
+  29                  i = 50000;
+  30                  while(i--);
+  31                  led0 = 1;
+  32                  i = 50000;
+  33                  while(i--);
+  34          
+  35                  led1 = 0;//led1灯是亮的
+  36                  i = 50000;
+  37                  while(i--);//led1灯持续亮50000次单指令周期
+  38                  led1 = 1;
+  39                  i = 50000;
+  40                  while(i--);
+  41          
+  42                  led2 = 0;
+  43                  i = 50000;
+  44                  while(i--);
+  45                  led2 = 1;
+  46                  i = 50000;
+  47                  while(i--);
+  48          
+  49                  led3 = 0;
+  50                  i = 50000;
+  51                  while(i--);
+  52                  led3 = 1;
+  53                  i = 50000;
+  54                  while(i--);
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:32 PAGE 2   
+
+  55          
+  56                  led4 = 0;
+  57                  i = 50000;
+  58                  while(i--);
+  59                  led4 = 1;
+  60                  i = 50000;
+  61                  while(i--);
+  62          
+  63                  led5 = 0;
+  64                  i = 50000;
+  65                  while(i--);
+  66                  led5 = 1;
+  67                  i = 50000;
+  68                  while(i--);
+  69          
+  70                  led6 = 0;
+  71                  i = 50000;
+  72                  while(i--);
+  73                  led6 = 1;
+  74                  i = 50000;
+  75                  while(i--);
+  76          
+  77                  led7 = 0;
+  78                  i = 50000;
+  79                  while(i--);
+  80                  led7 = 1;
+  81                  i = 50000;
+  82                  while(i--);
+  83              }
+  84          }
+  85          */
+  86          
+  87          /*
+  88          //C语言中左移的方式
+  89          void main()//主函数，程序的入口
+  90          {
+  91              unsigned int i,j;//定义main函数内的局部变量i、j
+  92          
+  93              while(1)
+  94              {
+  95                  P1 = 0xfe;//1111 1110
+  96          
+  97                  j = 8;//将j赋值为整数8
+  98                  while(j--)
+  99                  {
+ 100                      i = 20000;//将i赋值为整数20000
+ 101                      while(i--);//执行i次空操作
+ 102                      //1111 1110
+ 103                      //1111 1101
+ 104                      //1111 1011
+ 105                      P1 = P1<<1;//1111 1100，‘左移’语句
+ 106                      P1 = P1 | 0x01;//1111 1101，‘按位或语句’将P1的最低位置为1
+ 107                      //                  if(P1 == 0xff)
+ 108                      //                          break;
+ 109                  }
+ 110              }
+ 111          }
+ 112          */
+ 113          
+ 114          //C语言中循环左移的方式
+ 115          void main()//主函数，程序的入口
+ 116          {
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:32 PAGE 3   
+
+ 117   1          unsigned int i;
+ 118   1          P1 = 0x55;//0101 0101
+ 119   1          while(1)
+ 120   1          {
+ 121   2              i = 50000;
+ 122   2              while(i--);
+ 123   2              P1 = _crol_(P1,1);//循环左移’语句
+ 124   2          }
+ 125   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     32    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,402 @@
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:43 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE NEW_START03
+OBJECT MODULE PLACED IN .\Objects\new start03.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE new start03.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\new start03.lst) OBJECT(.\Objects\new start03.obj)
+
+line level    source
+
+   1          /***************************************
+   2          *GB2312
+   3          *作者：创客海
+   4          *内容：流水灯项目理论课-呼吸流水灯
+   5          *实验板：新起点51单片机实验板
+   6          *单片机型号：STC89C52RC
+   7          ***************************************/
+   8          
+   9          #include <STC89C5xRC.H>//引用了头文件，如果没有可用reg51.h代替
+  10          #include <INTRINS.H>//循环左移循环右移必须的函数
+  11          
+  12          sbit led0 = P1^0;//位声明了P1.0引脚为led0
+  13          sbit led1 = P1^1;//位声明了P1.1引脚为led1
+  14          sbit led2 = P1^2;//位声明了P1.2引脚为led2
+  15          sbit led3 = P1^3;//位声明了P1.3引脚为led3
+  16          sbit led4 = P1^4;//位声明了P1.4引脚为led4
+  17          sbit led5 = P1^5;//位声明了P1.5引脚为led5
+  18          sbit led6 = P1^6;//位声明了P1.6引脚为led6
+  19          sbit led7 = P1^7;//位声明了P1.7引脚为led7
+  20          
+  21          /*
+  22          //循环逐个点亮流水灯
+  23          void main()//主函数，程序的入口
+  24          {
+  25              while(1)
+  26              {
+  27                  unsigned int i;
+  28                  led0 = 0;
+  29                  i = 50000;
+  30                  while(i--);
+  31                  led0 = 1;
+  32                  i = 50000;
+  33                  while(i--);
+  34          
+  35                  led1 = 0;//led1灯是亮的
+  36                  i = 50000;
+  37                  while(i--);//led1灯持续亮50000次单指令周期
+  38                  led1 = 1;
+  39                  i = 50000;
+  40                  while(i--);
+  41          
+  42                  led2 = 0;
+  43                  i = 50000;
+  44                  while(i--);
+  45                  led2 = 1;
+  46                  i = 50000;
+  47                  while(i--);
+  48          
+  49                  led3 = 0;
+  50                  i = 50000;
+  51                  while(i--);
+  52                  led3 = 1;
+  53                  i = 50000;
+  54                  while(i--);
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:43 PAGE 2   
+
+  55          
+  56                  led4 = 0;
+  57                  i = 50000;
+  58                  while(i--);
+  59                  led4 = 1;
+  60                  i = 50000;
+  61                  while(i--);
+  62          
+  63                  led5 = 0;
+  64                  i = 50000;
+  65                  while(i--);
+  66                  led5 = 1;
+  67                  i = 50000;
+  68                  while(i--);
+  69          
+  70                  led6 = 0;
+  71                  i = 50000;
+  72                  while(i--);
+  73                  led6 = 1;
+  74                  i = 50000;
+  75                  while(i--);
+  76          
+  77                  led7 = 0;
+  78                  i = 50000;
+  79                  while(i--);
+  80                  led7 = 1;
+  81                  i = 50000;
+  82                  while(i--);
+  83              }
+  84          }
+  85          */
+  86          /*
+  87          //C语言中左移的方式
+  88          void main()//主函数，程序的入口
+  89          {
+  90              unsigned int i,j;//定义main函数内的局部变量i、j
+  91          
+  92              while(1)
+  93              {
+  94                  P1 = 0xfe;//1111 1110
+  95          
+  96                  j = 8;//将j赋值为整数8
+  97                  while(j--)
+  98                  {
+  99                      i = 20000;//将i赋值为整数20000
+ 100                      while(i--);//执行i次空操作
+ 101                      //1111 1110
+ 102                      //1111 1101
+ 103                      //1111 1011
+ 104                      P1 = P1<<1;//1111 1100，‘左移’语句
+ 105                      P1 = P1 | 0x01;//1111 1111，‘按位或语句’将P1的最低位置为1
+ 106                      //                  if(P1 == 0xff)
+ 107                      //                          break;
+ 108                  }
+ 109              }
+ 110          }
+ 111          */
+ 112          /*
+ 113          //C语言中循环左移的方式
+ 114          void main()//主函数，程序的入口
+ 115          {
+ 116              unsigned int i;
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:43 PAGE 3   
+
+ 117              P1 = 0x55;//0101 0101
+ 118              while(1)
+ 119              {
+ 120                  i = 50000;
+ 121                  while(i--);
+ 122                  P1 = _crol_(P1,1);//循环左移’语句
+ 123              }
+ 124          }
+ 125          */
+ 126          
+ 127          //点亮呼吸流水灯的一个实验
+ 128          void main()//主函数，程序的入口
+ 129          {
+ 130   1          unsigned int i,j;//定义main函数内的局部变量i、j
+ 131   1          unsigned char a;//定义main函数内的局部变量a
+ 132   1      
+ 133   1          a = 0xfe;//变量a赋值为1111 1110
+ 134   1      
+ 135   1          while(1)//死循环，外层循环
+ 136   1          {
+ 137   2              /*
+ 138   2              //在这里调节亮度
+ 139   2              //i = 50000;
+ 140   2              //while(i--);
+ 141   2              */
+ 142   2              i=500;//将i赋值为整数500
+ 143   2              //执行i次中层循环
+ 144   2              while(i--)//499-0
+ 145   2              {
+ 146   3                  P1 = a;//将P1赋值为变量a的值，点亮某个发光管
+ 147   3                  j = 99 - (i/5);//随着中层的循环，i递减，j递增，j的范围是0-99递增
+ 148   3                  while(j--);//执行j次中层循环
+ 149   3      
+ 150   3                  P1 = 0xff;//将P1赋值为0xff的值，熄灭所有发光管
+ 151   3                  j = i/5;//随着内层的循环，99-0递减
+ 152   3                  while(j--);//执行j次中层循环
+ 153   3              }
+ 154   2              /*
+ 155   2              //这里有外层、中层、内层循环，
+ 156   2              //外层循环控制点亮哪个发光管，
+ 157   2              //中层循环是控制点亮某个发光管的时长，
+ 158   2              //内层循环是控制发光管的亮度
+ 159   2              */
+ 160   2              i=500;
+ 161   2              while(i--)//499-0
+ 162   2              {
+ 163   3                  P1 = 0xff;
+ 164   3                  j = 99 - (i/5);//随着内层的循环递增,0-99递增
+ 165   3                  while(j--);
+ 166   3      
+ 167   3                  P1 = a;
+ 168   3                  j = i/5;//随着内层的循环，99-0递减
+ 169   3                  while(j--);
+ 170   3              }
+ 171   2      
+ 172   2              a = _crol_(a,1);//在外层循环将a变量循环左移，通过传递在内层将a赋值P1，来控制点亮哪个发光管
+ 173   2          }
+ 174   1      }
+ 175          
+ 176          /*
+ 177          //通过延时函数，实验不同亮度的流水灯，也就是每个流水灯的亮度并不相同
+ 178          //以下代码为函数声明，分号结尾，后面是函数定义
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:43 PAGE 4   
+
+ 179          //20uS延时函数
+ 180          void delay20us();
+ 181          //100uS延时函数
+ 182          void delay100us();
+ 183          //200uS延时函数
+ 184          void delay200us();
+ 185          //500uS延时函数
+ 186          void delay500us();
+ 187          //1mS延时函数
+ 188          void delay1ms();
+ 189          //2mS延时函数
+ 190          void delay2ms();
+ 191          //5mS延时函数
+ 192          void delay5ms();
+ 193          //10mS延时函数
+ 194          void delay10ms();
+ 195          //不同亮度的流水灯实验
+ 196          void main()//主函数，程序的入口
+ 197          {
+ 198                  unsigned char LEDS[8] = {0xfe, 0xfd, 0xfb, 0xf7, 0xef, 0xdf, 0xbf, 0x7f};
+ 199                  unsigned int i;
+ 200          
+ 201                  while (1)
+ 202                  {
+ 203                          for (i = 100; i > 0; i--)
+ 204                          {
+ 205                                  P1 = LEDS[0];
+ 206                                  delay20us();
+ 207                                  P1 = 0xff;
+ 208                                  delay10ms();
+ 209                          }
+ 210          
+ 211                          for (i = 100; i > 0; i--)
+ 212                          {
+ 213                                  P1 = LEDS[1];
+ 214                                  delay100us();
+ 215                                  P1 = 0xff;
+ 216                                  delay10ms();
+ 217                          }
+ 218          
+ 219                          for (i = 100; i > 0; i--)
+ 220                          {
+ 221                                  P1 = LEDS[2];
+ 222                                  delay200us();
+ 223                                  P1 = 0xff;
+ 224                                  delay10ms();
+ 225                          }
+ 226          
+ 227                          for (i = 100; i > 0; i--)
+ 228                          {
+ 229                                  P1 = LEDS[3];
+ 230                                  delay500us();
+ 231                                  P1 = 0xff;
+ 232                                  delay10ms();
+ 233                          }
+ 234          
+ 235                          for (i = 100; i > 0; i--)
+ 236                          {
+ 237                                  P1 = LEDS[4];
+ 238                                  delay1ms();
+ 239                                  P1 = 0xff;
+ 240                                  delay10ms();
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:43 PAGE 5   
+
+ 241                          }
+ 242                          for (i = 100; i > 0; i--)
+ 243                          {
+ 244                                  P1 = LEDS[5];
+ 245                                  delay2ms();
+ 246                                  P1 = 0xff;
+ 247                                  delay10ms();
+ 248                          }
+ 249                          for (i = 75; i > 0; i--)
+ 250                          {
+ 251                                  P1 = LEDS[6];
+ 252                                  delay5ms();
+ 253                                  P1 = 0xff;
+ 254                                  delay10ms();
+ 255                          }
+ 256                          for (i = 50; i > 0; i--)
+ 257                          {
+ 258                                  P1 = LEDS[7];
+ 259                                  delay10ms();
+ 260                                  P1 = 0xff;
+ 261                                  delay10ms();
+ 262                          }
+ 263                  }
+ 264          }
+ 265          //20uS延时函数
+ 266          void delay20us() //@11.0592MHz
+ 267          {
+ 268                  unsigned char i;
+ 269          
+ 270                  _nop_();
+ 271                  i = 6;
+ 272                  while (--i)
+ 273                          ;
+ 274          }
+ 275          
+ 276          //100uS延时函数
+ 277          void delay100us() //@11.0592MHz
+ 278          {
+ 279                  unsigned char i;
+ 280          
+ 281                  _nop_();
+ 282                  i = 43;
+ 283                  while (--i)
+ 284                          ;
+ 285          }
+ 286          
+ 287          //200uS延时函数
+ 288          void delay200us() //@11.0592MHz
+ 289          {
+ 290                  unsigned char i;
+ 291          
+ 292                  _nop_();
+ 293                  i = 89;
+ 294                  while (--i)
+ 295                          ;
+ 296          }
+ 297          
+ 298          //500uS延时函数
+ 299          void delay500us() //@11.0592MHz
+ 300          {
+ 301                  unsigned char i;
+ 302          
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:43 PAGE 6   
+
+ 303                  _nop_();
+ 304                  i = 227;
+ 305                  while (--i)
+ 306                          ;
+ 307          }
+ 308          
+ 309          //1mS延时函数
+ 310          void delay1ms() //@11.0592MHz
+ 311          {
+ 312                  unsigned char i, j;
+ 313          
+ 314                  _nop_();
+ 315                  i = 2;
+ 316                  j = 199;
+ 317                  do
+ 318                  {
+ 319                          while (--j)
+ 320                                  ;
+ 321                  } while (--i);
+ 322          }
+ 323          
+ 324          //2mS延时函数
+ 325          void delay2ms() //@11.0592MHz
+ 326          {
+ 327                  unsigned char i, j;
+ 328          
+ 329                  _nop_();
+ 330                  i = 4;
+ 331                  j = 146;
+ 332                  do
+ 333                  {
+ 334                          while (--j)
+ 335                                  ;
+ 336                  } while (--i);
+ 337          }
+ 338          
+ 339          //5mS延时函数
+ 340          void delay5ms() //@11.0592MHz
+ 341          {
+ 342                  unsigned char i, j;
+ 343          
+ 344                  i = 9;
+ 345                  j = 244;
+ 346                  do
+ 347                  {
+ 348                          while (--j)
+ 349                                  ;
+ 350                  } while (--i);
+ 351          }
+ 352          
+ 353          //10mS延时函数
+ 354          void delay10ms() //@11.0592MHz
+ 355          {
+ 356                  unsigned char i, j;
+ 357          
+ 358                  i = 18;
+ 359                  j = 235;
+ 360                  do
+ 361                  {
+ 362                          while (--j)
+ 363                                  ;
+ 364                  } while (--i);
+C51 COMPILER V9.60.0.0   NEW_START03                                                       04/19/2022 16:26:43 PAGE 7   
+
+ 365          }
+ 366          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    173    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

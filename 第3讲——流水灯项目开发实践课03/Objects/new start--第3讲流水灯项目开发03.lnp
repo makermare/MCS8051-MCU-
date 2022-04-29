@@ -1,0 +1,3 @@
+".\Objects\new start03.obj" 
+TO ".\Objects\new start--第3讲流水灯项目开发03" 
+PRINT(".\Listings\new start--第3讲流水灯项目开发03.m51") RAMSIZE(256) 

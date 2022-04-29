@@ -1,0 +1,80 @@
+C51 COMPILER V9.60.0.0   NEW_START02                                                       04/19/2022 16:26:21 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE NEW_START02
+OBJECT MODULE PLACED IN .\Objects\new start02.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE new start02.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\new start02.lst) OBJECT(.\Objects\new start02.obj)
+
+line level    source
+
+   1          /***************************************
+   2          *GB2312
+   3          *作者：创客海
+   4          *内容：流水灯项目理论课-LED亮度调节
+   5          *实验板：新起点51单片机实验板
+   6          *单片机型号：STC89C52RC
+   7          ***************************************/
+   8          
+   9          #include <STC89C5xRC.H>//引用了头文件，如果没有可用reg51.h代替
+  10          
+  11          //LED固定亮度实验，通过改变对i的赋值，可以改变发光管的亮度
+  12          void main()//主函数，程序的入口
+  13          {
+  14   1          unsigned int i;//定义main函数内的局部变量i
+  15   1      
+  16   1          while(1)//死循环
+  17   1          {
+  18   2              P1 = 0xfe;//将P1口赋值为1111 1110
+  19   2              i = 50;//将i赋值为整数50，改变这里的50可以调节发光的亮度
+  20   2              while(i--);//执行50次空操作
+  21   2      
+  22   2              P1 = 0xff;//将P1口赋值为1111 1111
+  23   2              i = 2000;//将i赋值为整数2000
+  24   2              while(i--);//执行i次空操作
+  25   2          }
+  26   1      }
+  27          /*
+  28          //LED亮度渐变实验，其中j和k分别传递值给i，用于控制不同阶段的延时间隔
+  29          void main()
+  30          {
+  31              unsigned int i, j, k;//定义main函数内的局部变量i、j、k
+  32          
+  33              j = 0;//将i赋值为整数0
+  34              k = 1000;//将i赋值为整数1000
+  35          
+  36              while (1)//死循环
+  37              {
+  38                  P1 = 0xfe;//将P1口赋值为1111 1110
+  39          
+  40                  i = j;//将i赋值为j的值，用于控制点亮发光管的延时间隔
+  41                  while (i--);//执行i次空操作
+  42          
+  43                  P1 = 0xff;//将P1口赋值为1111 1110
+  44          
+  45                  i = k;//将i赋值为k的值，用于控制熄灭发光管的延时间隔
+  46                  while (i--);//执行i次空操作
+  47          
+  48                  //这里是对j的值在外层循环中自加5，每次自加5以后发光管的亮度都有变得更亮
+  49                  j = j + 5;//这样就是亮度递增
+  50                  if (j > 1000)//判断j的最大值，j大于1000时，j重新清零
+  51                      j = 0;
+  52              }
+  53          }
+  54          */
+C51 COMPILER V9.60.0.0   NEW_START02                                                       04/19/2022 16:26:21 PAGE 2   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     36    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
