@@ -1,0 +1,66 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              04/28/2022 09:44:25 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /**************************************************************** 
+   2           * 实验板：  创客海51单片机实验板源代码，适用于STC89C52系列单片机
+   3           * 温馨提示：代码精心调试，开源免费，希望得到您的支持，技术问题请到创客海论坛交流，
+   4           * 淘宝店铺：创客海社区一号店，感谢您的光临！
+   5           * 程序目的：学习主函数的创建方法
+   6           * 函数功能: 指示灯间歇闪动
+   7          *******************************************************************************/
+   8          #include <STC89C5xRC.H>
+   9          
+  10          sbit led1=P1^0;  //第一个led是和P1^0口连接的。
+  11          /*******************************************************************************
+  12          * 延时子函数 : Delay1ms
+  13          * 函数功能   : 延时函数，延时1ms
+  14          *******************************************************************************/
+  15          void Delay1ms(unsigned int xms)   //@11.0592MHz
+  16          {
+  17   1        while(xms--)                //先判断xms是否等于0，不等于0执行循环体，执行完再减1
+  18   1        {                           //括弧内的xms--，等同于xms=xms-1
+  19   2          unsigned char i=2, j=199;
+  20   2          do                        //循环嵌套
+  21   2            {
+  22   3            while (--j);            //最里层循环
+  23   3            } 
+  24   2          while (--i);
+  25   2        }  
+  26   1      }
+  27          
+  28          /*******************************************************************************
+  29          * 主函数     : main
+  30          * 函数功能   : 指示灯间歇闪动
+  31          *******************************************************************************/
+  32          
+  33          void main()
+  34          {
+  35   1          while(1)           //while()函数的括弧内参数是1，循环永不停止
+  36   1          {
+  37   2            P10=0;           //点亮
+  38   2            Delay1ms(500);   //带参数的子程序调用
+  39   2            P10=1;           //熄灭
+  40   2            Delay1ms(500);   //带参数的子程序调用
+  41   2          }   
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     45    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
