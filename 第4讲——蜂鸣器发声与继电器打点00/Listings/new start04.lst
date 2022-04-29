@@ -1,0 +1,59 @@
+C51 COMPILER V9.60.0.0   NEW_START04                                                       04/30/2022 00:43:03 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE NEW_START04
+OBJECT MODULE PLACED IN .\Objects\new start04.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE new start04.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\new start04.lst) OBJECT(.\Objects\new start04.obj)
+
+line level    source
+
+   1          /***************************************
+   2          *GB2312
+   3          *作者：创客海
+   4          *内容：蜂鸣器项目理论课-蜂鸣器发出声音
+   5          *实验板：新起点51单片机实验板
+   6          *单片机型号：STC89C52RC
+   7          ***************************************/
+   8          
+   9          #include <STC89C5xRC.H>//引用了头文件，如果没有可用reg51.h代替
+  10          //#include <INTRINS.H>//循环左移循环右移必须的函数
+  11          
+  12          sbit FM = P2 ^ 3;//位声明了P2.3引脚为蜂鸣器
+  13          
+  14          /*------------------------------------------------
+  15           延时函数，含有输入参数 unsigned int t，无返回值
+  16           unsigned int 是定义无符号整形变量，其值的范围是
+  17           0~65535
+  18          ------------------------------------------------*/
+  19          void Delay(unsigned int t)
+  20          {
+  21   1          while (--t);
+  22   1      }
+  23          
+  24          //蜂鸣器发出声音
+  25          void main()//主函数，程序的入口
+  26          {
+  27   1          //死循环，在循环中反复地修改FM和值，让P2.3引脚输出周期性的高低信号
+  28   1          while (1)
+  29   1          {
+  30   2              FM = 1; //高电平，不发声音
+  31   2              Delay(200);//改变这个数值可以发出不同的声音频率，修改小了以后音调变高
+  32   2              FM = 0; //低电平，发声音
+  33   2              Delay(200);
+  34   2          }
+  35   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     30    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

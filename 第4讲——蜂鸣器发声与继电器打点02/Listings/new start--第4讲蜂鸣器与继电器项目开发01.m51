@@ -1,0 +1,166 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/19/2022  16:27:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\new start04.obj TO .\Objects\new start--第4讲蜂鸣器与继电器项目开发01 PRINT (.\Lis
+>> tings\new start--第4讲蜂鸣器与继电器项目开发01.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\new start04.obj (NEW_START04)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  .\Objects\new start--第4讲蜂鸣器与继电器项目开发01 (NEW_START04)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     004EH     UNIT         ?PR?MAIN?NEW_START04
+            CODE    0051H     000CH     UNIT         ?C_C51STARTUP
+            CODE    005DH     000AH     UNIT         ?PR?DELAY1911US?NEW_START04
+            CODE    0067H     000AH     UNIT         ?PR?DELAY1516US?NEW_START04
+            CODE    0071H     0009H     UNIT         ?PR?DELAY1702US?NEW_START04
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\new start--第4讲蜂鸣器与继电器项目开发01 (NEW_START04)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?NEW_START04
+
+?PR?MAIN?NEW_START04
+  +--> ?PR?DELAY1911US?NEW_START04
+  +--> ?PR?DELAY1702US?NEW_START04
+  +--> ?PR?DELAY1516US?NEW_START04
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\new start--第4讲蜂鸣器与继电器项目开发01 (NEW_START04)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        NEW_START04
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/19/2022  16:27:18  PAGE 2
+
+
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00E8H         PUBLIC        P4
+  D:00A8H         PUBLIC        IE
+  B:00A0H.3       PUBLIC        FM
+  D:00B8H         PUBLIC        IP
+  C:0003H         PUBLIC        main
+  C:0071H         PUBLIC        Delay1702us
+  C:005DH         PUBLIC        Delay1911us
+  C:0067H         PUBLIC        Delay1516us
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          DELAY1911US
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:005DH         LINE#         17
+  C:005DH         LINE#         18
+  C:005DH         LINE#         21
+  C:005EH         LINE#         22
+  C:0060H         LINE#         23
+  C:0062H         LINE#         25
+  C:0062H         LINE#         26
+  C:0064H         LINE#         27
+  C:0064H         LINE#         28
+  C:0066H         LINE#         29
+  -------         ENDPROC       DELAY1911US
+  -------         PROC          DELAY1702US
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:0071H         LINE#         30
+  C:0071H         LINE#         31
+  C:0071H         LINE#         34
+  C:0073H         LINE#         35
+  C:0075H         LINE#         37
+  C:0075H         LINE#         38
+  C:0077H         LINE#         39
+  C:0077H         LINE#         40
+  C:0079H         LINE#         41
+  -------         ENDPROC       DELAY1702US
+  -------         PROC          DELAY1516US
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:0067H         LINE#         42
+  C:0067H         LINE#         43
+  C:0067H         LINE#         46
+  C:0068H         LINE#         47
+  C:006AH         LINE#         48
+  C:006CH         LINE#         50
+  C:006CH         LINE#         51
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/19/2022  16:27:18  PAGE 3
+
+
+  C:006EH         LINE#         52
+  C:006EH         LINE#         53
+  C:0070H         LINE#         54
+  -------         ENDPROC       DELAY1516US
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0003H         LINE#         56
+  C:0003H         LINE#         57
+  C:0003H         LINE#         58
+  C:0003H         LINE#         59
+  C:0003H         LINE#         60
+  C:0003H         LINE#         61
+  C:0007H         LINE#         62
+  C:0011H         LINE#         63
+  C:0011H         LINE#         64
+  C:0013H         LINE#         65
+  C:0016H         LINE#         66
+  C:0018H         LINE#         67
+  C:001BH         LINE#         68
+  C:001DH         LINE#         69
+  C:0021H         LINE#         70
+  C:002BH         LINE#         71
+  C:002BH         LINE#         72
+  C:002DH         LINE#         73
+  C:0030H         LINE#         74
+  C:0032H         LINE#         75
+  C:0035H         LINE#         76
+  C:0037H         LINE#         77
+  C:003BH         LINE#         78
+  C:0045H         LINE#         79
+  C:0045H         LINE#         80
+  C:0047H         LINE#         81
+  C:004AH         LINE#         82
+  C:004CH         LINE#         83
+  C:004FH         LINE#         84
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        NEW_START04
+
+Program Size: data=9.0 xdata=0 code=122
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
