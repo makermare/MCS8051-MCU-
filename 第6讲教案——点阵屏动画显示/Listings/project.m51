@@ -1,0 +1,180 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/30/2022  06:50:08  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\NewStartC51.obj TO .\Objects\project PRINT (.\Listings\project
+>> .m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\NewStartC51.obj (NEWSTARTC51)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+
+
+LINK MAP OF MODULE:  .\Objects\project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0030H     UNIT         _IDATA_GROUP_
+            IDATA   003BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00F6H     UNIT         ?C?LIB_CODE
+            CODE    00F9H     0061H     UNIT         ?PR?MAIN?MAIN
+            CODE    015AH     0030H     UNIT         ?CO?MAIN
+            CODE    018AH     0022H     UNIT         ?PR?_XDISPLAY?MAIN
+            CODE    01ACH     0013H     UNIT         ?PR?_DELAY100US?MAIN
+            CODE    01BFH     000CH     UNIT         ?C_C51STARTUP
+            CODE    01CBH     0009H     UNIT         ?PR?NEWSTART_INIT?NEWSTARTC51
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\project (MAIN)
+
+
+SEGMENT                                 DATA_GROUP          IDATA_GROUP
+  +--> CALLED SEGMENT                 START    LENGTH     START    LENGTH
+-------------------------------------------------------------------------
+?C_C51STARTUP                         -----    -----      -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                         0008H    0003H      000BH    0030H
+  +--> ?CO?MAIN
+  +--> ?PR?NEWSTART_INIT?NEWSTARTC51
+  +--> ?PR?_XDISPLAY?MAIN
+  +--> ?PR?_DELAY100US?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/30/2022  06:50:08  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A0H.2       PUBLIC        CS88
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:00F9H         PUBLIC        main
+  B:00A0H.0       PUBLIC        DUAN
+  C:018AH         PUBLIC        _XDisplay
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:015AH         SYMBOL        _?ix1000
+  D:00C8H         PUBLIC        T2CON
+  C:01ACH         PUBLIC        _Delay100us
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY100US
+  D:0006H         SYMBOL        Xus
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:01ACH         LINE#         15
+  C:01ACH         LINE#         16
+  C:01ACH         LINE#         18
+  C:01B6H         LINE#         19
+  C:01B6H         LINE#         21
+  C:01B8H         LINE#         22
+  C:01BEH         LINE#         24
+  C:01BEH         LINE#         25
+  -------         ENDPROC       _DELAY100US
+  -------         PROC          _XDISPLAY
+  D:0007H         SYMBOL        DisData
+  D:0004H         SYMBOL        Sit
+  C:018AH         LINE#         32
+  C:018AH         LINE#         33
+  C:018AH         LINE#         34
+  C:018DH         LINE#         35
+  C:018FH         LINE#         36
+  C:0191H         LINE#         38
+  C:0193H         LINE#         39
+  C:0195H         LINE#         40
+  C:0197H         LINE#         42
+  C:01A7H         LINE#         43
+  C:01A9H         LINE#         44
+  C:01ABH         LINE#         45
+  -------         ENDPROC       _XDISPLAY
+  -------         PROC          MAIN
+  -------         DO            
+  I:000BH         SYMBOL        Num
+  -------         DO            
+  D:0008H         SYMBOL        i
+  D:0009H         SYMBOL        Map
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/30/2022  06:50:08  PAGE 3
+
+
+  D:000AH         SYMBOL        Stay
+  -------         ENDDO         
+  -------         ENDDO         
+  C:00F9H         LINE#         53
+  C:00F9H         LINE#         54
+  C:00F9H         LINE#         55
+  C:010CH         LINE#         65
+  C:010FH         LINE#         66
+  C:010FH         LINE#         67
+  C:010FH         LINE#         69
+  C:011DH         LINE#         70
+  C:011DH         LINE#         71
+  C:012BH         LINE#         72
+  C:012BH         LINE#         73
+  C:013CH         LINE#         74
+  C:013CH         LINE#         75
+  C:0148H         LINE#         76
+  C:014EH         LINE#         77
+  C:0152H         LINE#         78
+  C:0156H         LINE#         79
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        NEWSTARTC51
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A0H.2       PUBLIC        CS88
+  D:00A8H         PUBLIC        IE
+  C:01CBH         PUBLIC        newstart_init
+  D:00B8H         PUBLIC        IP
+  B:00A0H.0       PUBLIC        DUAN
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:00A0H.5       PUBLIC        LCD_EN
+  B:00A0H.1       PUBLIC        WEI
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          NEWSTART_INIT
+  C:01CBH         LINE#         3
+  C:01CBH         LINE#         4
+  C:01CBH         LINE#         5
+  C:01CDH         LINE#         6
+  C:01CFH         LINE#         7
+  C:01D1H         LINE#         8
+  C:01D3H         LINE#         9
+  -------         ENDPROC       NEWSTART_INIT
+  -------         ENDMOD        NEWSTARTC51
+
+  -------         MODULE        ?C?COPY
+  C:00D3H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+Program Size: data=60.0 xdata=0 code=468
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
