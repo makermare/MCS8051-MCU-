@@ -1,7 +1,7 @@
 # MCS8051内核的MCU单片机例程
 
 ### 介绍
-您不错的入门C语言和单片机的好例程，购买地址[新起点51单片机实验板](https://item.taobao.com/item.htm?id=677525446299)
+您不错的入门C语言和单片机的好例程，购买地址[新起点51单片机开发板](https://item.taobao.com/item.htm?id=677525446299)
 对应视频教程在[B站搜索创客海社区](https://space.bilibili.com/167945395)
 所有例程和视频基于创客海的新起点51单片机实验板，淘宝店：
 店铺链接[创海社区官方1号店](https://letsflynow.taobao.com)
